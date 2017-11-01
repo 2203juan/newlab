@@ -1,0 +1,263 @@
+#include "gridsizer.h"
+#include <iostream>
+using namespace std;
+
+GridSizer::GridSizer(const wxString& title)
+       : wxFrame(NULL, -1, title, wxPoint(-1, -1), wxSize(270, 220))
+{
+  sizer = new wxBoxSizer(wxVERTICAL);
+ 
+  display = new wxTextCtrl(this, -1, wxT(""), wxPoint(-1, -1),
+     wxSize(-1, -1), wxTE_RIGHT);
+
+  sizer->Add(display, 0, wxEXPAND | wxTOP | wxBOTTOM, 4);
+  gs = new wxGridSizer(5, 4, 3, 3);
+
+  gs->Add(new wxButton(this, 1050, wxT("Cls")), 0, wxEXPAND);
+  gs->Add(new wxButton(this, -1, wxT("Bck")), 0, wxEXPAND);
+  gs->Add(new wxStaticText(this, -1, wxT("")), 0, wxEXPAND);
+  gs->Add(new wxButton(this, -1, wxT("Close")), 0, wxEXPAND);
+  gs->Add(new wxButton(this, -1, wxT("7")), 0, wxEXPAND); 
+  gs->Add(new wxButton(this, -1, wxT("8")), 0, wxEXPAND);
+  gs->Add(new wxButton(this, -1, wxT("9")), 0, wxEXPAND);
+  gs->Add(new wxButton(this, 1013, wxT("/")), 0, wxEXPAND);
+  gs->Add(new wxButton(this, -1, wxT("4")), 0, wxEXPAND);
+  gs->Add(new wxButton(this, -1, wxT("5")), 0, wxEXPAND);
+  gs->Add(new wxButton(this, -1, wxT("6")), 0, wxEXPAND);
+  gs->Add(new wxButton(this, 1012, wxT("*")), 0, wxEXPAND);
+  gs->Add(new wxButton(this, 1001, wxT("1")), 0, wxEXPAND);
+  gs->Add(new wxButton(this, 1002, wxT("2")), 0, wxEXPAND);
+  gs->Add(new wxButton(this, -1, wxT("3")), 0, wxEXPAND);
+  gs->Add(new wxButton(this, 1010, wxT("-")), 0, wxEXPAND);
+  gs->Add(new wxButton(this, -1, wxT("0")), 0, wxEXPAND);
+  gs->Add(new wxButton(this, -1, wxT(".")), 0, wxEXPAND);
+  gs->Add(new wxButton(this, -1, wxT("=")), 0, wxEXPAND);
+  gs->Add(new wxButton(this, 1011 , wxT("+")), 0, wxEXPAND);
+
+  sizer->Add(gs, 1, wxEXPAND);
+  SetSizer(sizer);
+  SetMinSize(wxSize(270, 220));
+
+  Centre();
+}
+
+void GridSizer::onCls (wxCommandEvent& WXUNUSED (event)) {
+	nClicks += 1;
+	cout <<"Hola " << nClicks << endl;
+}
+
+
+void GridSizer::onBt1 (wxCommandEvent& WXUNUSED (event)) {
+	nClicks += 1;
+	cout <<"Hola " << nClicks << endl;
+	if (nClicks==1)
+		valor1 = 1;
+	if (nClicks==2)
+		valor2 = 1;
+}
+
+void GridSizer::onBt2 (wxCommandEvent& WXUNUSED (event)) {
+	nClicks += 1;
+	cout <<"Hola " << nClicks << endl;
+	if (nClicks==1)
+		valor1 = 2;
+	if (nClicks==2)
+		valor2 = 2;
+}
+
+void GridSizer::onBt3 (     ┌────────────────────────────────────────────────────────────────────┐
+     │                        • MobaXterm 10.4 •                          │
+          │            (SSH client, X-server and networking tools)             │
+               │                                                                    │
+                    │ ➤ SSH session to kcamacho@192.168.121.33                           │
+                         │   • SSH compression : ✔                                            │
+                              │   • SSH-browser     : ✔                                            │
+                                   │   • X11-forwarding  : ✔  (remote display is forwarded through SSH) │
+                                        │   • DISPLAY         : ✔  (automatically set on remote server)      │
+                                             │                                                                    │
+                                                  │ ➤ For more info, ctrl+click on help or visit our website           │
+                                                       └────────────────────────────────────────────────────────────────────┘
+                                                       
+                                                       Last login: Wed Nov  1 16:29:30 2017 from 192.168.121.8
+                                                       kcamacho@dell:~$ ll
+                                                       total 60
+                                                       drwxr-xr-x  7 kcamacho kcamacho 4096 nov  1 16:51 ./
+                                                       drwxr-xr-x 21 root     root     4096 oct 31 16:50 ../
+                                                       -rw-------  1 kcamacho kcamacho  400 nov  1 16:51 .bash_history
+                                                       -rw-r--r--  1 kcamacho kcamacho  220 ago 31  2015 .bash_logout
+                                                       -rw-r--r--  1 kcamacho kcamacho 3771 ago 31  2015 .bashrc
+                                                       drwx------  2 kcamacho kcamacho 4096 oct 31 17:00 .cache/
+                                                       drwx------  3 kcamacho kcamacho 4096 nov  1 16:32 .config/
+                                                       drwx------  3 kcamacho kcamacho 4096 nov  1 16:32 .dbus/
+                                                       -rw-r--r--  1 kcamacho kcamacho 8980 abr 20  2016 examples.desktop
+                                                       drwxrwxr-x  2 kcamacho kcamacho 4096 oct 31 17:11 .nano/
+                                                       -rw-r--r--  1 kcamacho kcamacho  655 jun 24  2016 .profile
+                                                       drwxrwxr-x  4 kcamacho kcamacho 4096 oct 31 17:09 tc-events/
+                                                       -rw-------  1 kcamacho kcamacho  100 nov  1 16:51 .Xauthority
+                                                       kcamacho@dell:~$ cd tc-events
+                                                       kcamacho@dell:~/tc-events$ ll
+                                                       total 20
+                                                       drwxrwxr-x 4 kcamacho kcamacho 4096 oct 31 17:09 ./
+                                                       drwxr-xr-x 7 kcamacho kcamacho 4096 nov  1 16:51 ../
+                                                       drwxrwxr-x 2 kcamacho kcamacho 4096 nov  1 16:49 calc/
+                                                       drwxrwxr-x 8 kcamacho kcamacho 4096 oct 31 17:09 .git/
+                                                       -rw-rw-r-- 1 kcamacho kcamacho   49 oct 31 17:09 README.md
+                                                       kcamacho@dell:~/tc-events$ cd calc
+                                                       kcamacho@dell:~/tc-events/calc$ ll
+                                                       total 168
+                                                       drwxrwxr-x 2 kcamacho kcamacho   4096 nov  1 16:49 ./
+                                                       drwxrwxr-x 4 kcamacho kcamacho   4096 oct 31 17:09 ../
+                                                       -rwxrwxr-x 1 kcamacho kcamacho 139976 nov  1 16:32 calc.exe*
+                                                       -rw-rw-r-- 1 kcamacho kcamacho     74 oct 31 17:09 compilar.sh
+                                                       -rw-rw-r-- 1 kcamacho kcamacho   3072 nov  1 16:48 gridsizer.cpp
+                                                       -rw-rw-r-- 1 kcamacho kcamacho    441 oct 31 17:09 gridsizer.h
+                                                       -rw-rw-r-- 1 kcamacho kcamacho    180 oct 31 17:09 main.cpp
+                                                       -rw-rw-r-- 1 kcamacho kcamacho     89 oct 31 17:09 main.h
+                                                       kcamacho@dell:~/tc-events/calc$ nano gridsizer.cpp
+                                                       kcamacho@dell:~/tc-events/calc$ sh compilar ^C
+                                                       kcamacho@dell:~/tc-events/calc$
+                                                       kcamacho@dell:~/tc-events/calc$ nano gridsizer.cpp
+                                                       kcamacho@dell:~/tc-events/calc$ sh compila.sh
+                                                       sh: 0: Can't open compila.sh
+                                                       kcamacho@dell:~/tc-events/calc$ /.calc.exe
+                                                       -bash: /.calc.exe: No such file or directory
+                                                       kcamacho@dell:~/tc-events/calc$ ./calc.exe
+                                                       Hola 1
+                                                       Hola 2
+                                                       Resultado resta-1
+                                                       Hola 3
+                                                       Hola 4
+                                                       cd
+                                                       ^C
+                                                       kcamacho@dell:~/tc-events/calc$ nano gridsizer.cpp
+                                                       kcamacho@dell:~/tc-events/calc$ sh compila.sh
+                                                       sh: 0: Can't open compila.sh
+                                                       kcamacho@dell:~/tc-events/calc$ ./calc.exe
+                                                       Hola 1
+                                                       Hola 2
+                                                       Resultado resta-1
+                                                       Hola 3
+                                                       Hola 4
+                                                       Hola 5
+                                                       Hola 6
+                                                       Hola 7
+                                                       Hola 8
+                                                       Hola 9
+                                                       Hola 10
+                                                       Hola 11
+                                                       Hola 12
+                                                       Hola 13
+                                                       Hola 14
+                                                       Hola 15
+                                                       Hola 16
+                                                       Hola 17
+                                                       Hola 18
+                                                       Hola 19
+                                                       Hola 20
+                                                       Hola 21
+                                                       Hola 22
+                                                       Hola 23
+                                                       Hola 24
+                                                       Hola 25
+                                                       ^C
+                                                       kcamacho@dell:~/tc-events/calc$ ^C
+                                                       kcamacho@dell:~/tc-events/calc$ nano gridsizer.cpp
+                                                       kcamacho@dell:~/tc-events/calc$ sh compila.sh
+                                                       sh: 0: Can't open compila.sh
+                                                       kcamacho@dell:~/tc-events/calc$ sh compilar.sh
+                                                       kcamacho@dell:~/tc-events/calc$ ./calc.exe
+                                                       Hola 1
+                                                       Hola 2
+                                                       Resultado resta-1
+                                                       Hola 1
+                                                       Hola 2
+                                                       Resultado multiplicacion2
+                                                       Hola 1
+                                                       Hola 2
+                                                       Resultado dividir0
+                                                       Hola 1
+                                                       Hola 2
+                                                       Resultado suma 3
+                                                       kcamacho@dell:~/tc-events/calc$ nano gridsizer.cpp
+                                                         GNU nano 2.5.3                                          File: gridsizer.cpp                                                                                Modified
+                                                         
+                                                                 nClicks += 1;
+                                                                         cout <<"Hola " << nClicks << endl;
+                                                                         }
+                                                                         
+                                                                         
+                                                                         void GridSizer::onBt1 (wxCommandEvent& WXUNUSED (event)) {
+                                                                                 nClicks += 1;
+                                                                                         cout <<"Hola " << nClicks << endl;
+                                                                                                 if (nClicks==1)
+                                                                                                                 valor1 = 1;
+                                                                                                                         if (nClicks==2)
+                                                                                                                                         valor2 = 1;
+                                                                                                                                         }
+                                                                                                                                         
+                                                                                                                                         void GridSizer::onBt2 (wxCommandEvent& WXUNUSED (event)) {
+                                                                                                                                                 nClicks += 1;
+                                                                                                                                                         cout <<"Hola " << nClicks << endl;
+                                                                                                                                                                 if (nClicks==1)
+                                                                                                                                                                                 valor1 = 2;
+                                                                                                                                                                                         if (nClicks==2)
+                                                                                                                                                                                                         valor2 = 2;
+                                                                                                                                                                                                         }
+                                                                                                                                                                                                         
+                                                                                                                                                                                                         void GridSizer::onBt3 (
+                                                                                                                                                                                                         c
+                                                                                                                                                                                                         void GridSizer::onBtSum (wxCommandEvent& WXUNUSED (event)) {
+                                                                                                                                                                                                                 int total = valor1 + valor2;
+                                                                                                                                                                                                                         nClicks = 0;
+                                                                                                                                                                                                                                 cout << "Resultado suma = " << total << endl;
+                                                                                                                                                                                                                                 }
+                                                                                                                                                                                                                                 
+                                                                                                                                                                                                                                 void GridSizer::onBtRes (wxCommandEvent& WXUNUSED (event)){
+                                                                                                                                                                                                                                         int total = valor1 - valor2;
+                                                                                                                                                                                                                                                 nClicks = 0;
+                                                                                                                                                                                                                                                         cout << "Resultado resta = " << total << endl;
+                                                                                                                                                                                                                                                         }
+                                                                                                                                                                                                                                                         
+                                                                                                                                                                                                                                                         void GridSizer::onBtMul (wxCommandEvent& WXUNUSED (event)){
+                                                                                                                                                                                                                                                                 int total = valor1 * valor2;
+                                                                                                                                                                                                                                                                         nClicks = 0;
+                                                                                                                                                                                                                                                                                 cout << "Resultado multiplicacion = " << total << endl;
+                                                                                                                                                                                                                                                                                 }
+                                                                                                                                                                                                                                                                                                                                      [ line 68/103 (66%), col 24/24 (100%), char 2186/3164 (69%) ]
+                                                                                                                                                                                                                                                                                                                                      ^G Get Help     ^O Write Out    ^W Where Is     ^K Cut Text     ^J Justify      ^C Cur Pos      ^Y Prev Page    M-\ First Line  M-W WhereIs Next^^ Mark Text
+                                                                                                                                                                                                                                                                                                                                      ^X Exit         ^R Read File    ^\ Replace      ^U Uncut Text   ^T To Spell     ^_ Go To Line   ^V Next Page    M-/ Last Line   M-] To Bracket  M-^ Copy Text
+                                                                                                                                                                                                                                                                                                                                      
+
+void GridSizer::onBtSum (wxCommandEvent& WXUNUSED (event)) {
+	int total = valor1 + valor2;
+	nClicks = 0;
+	cout << "Resultado suma = " << total << endl;
+}
+
+void GridSizer::onBtRes (wxCommandEvent& WXUNUSED (event)){
+	int total = valor1 - valor2;
+	nClicks = 0;
+	cout << "Resultado resta = " << total << endl;
+}
+
+void GridSizer::onBtMul (wxCommandEvent& WXUNUSED (event)){
+	int total = valor1 * valor2;
+	nClicks = 0;
+	cout << "Resultado multiplicacion = " << total << endl;
+}
+
+void GridSizer::onBtDiv (wxCommandEvent& WXUNUSED (event)){
+	int total = valor1 / valor2;
+	nClicks = 0;
+	cout << "Resultado dividir = " << total << endl;
+}
+	
+BEGIN_EVENT_TABLE(GridSizer, wxFrame)
+    EVT_BUTTON(1050,  GridSizer::onCls)
+    EVT_BUTTON(1001,  GridSizer::onBt1)
+    EVT_BUTTON(1002,  GridSizer::onBt2)
+    EVT_BUTTON(1011,  GridSizer::onBtSum)
+    EVT_BUTTON(1010,  GridSizer::onBtRes)
+    EVT_BUTTON(1012,  GridSizer::onBtMul)
+    EVT_BUTTON(1013,  GridSizer::onBtDiv)
+END_EVENT_TABLE()
