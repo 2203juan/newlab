@@ -26,6 +26,8 @@ public:
   void onBtRes (wxCommandEvent&);
   void onBtMul (wxCommandEvent&);
   void onBtDiv (wxCommandEvent&);
+  void onBIgua (wxCommandEvent&);
+
 
 private:
   int valor1;
